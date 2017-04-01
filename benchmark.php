@@ -95,7 +95,7 @@ global $result, $grand;
 
     $grand +=pow($wphc_overalltime,3);
     $grand=$grand*20/32*2/3;
-    $result['Overall Score'] = $grand;
+    $result['Overall Score'] = round($grand);
 
     return $result;
 }
