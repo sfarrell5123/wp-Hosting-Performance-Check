@@ -3,14 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 /**
- * PHP Script to benchmark PHP and MySQL-Server
- *
- * inspired by / thanks to:
- * - www.php-benchmark-script.com  (Alessandro Torrisi)
- * - www.webdesign-informatik.de
- *
- * @author odan
- * @license MIT
+this file is largely Copyright (c) 2014-2016 odan, and licensed under MIT license
  */
 // -----------------------------------------------------------------------------
 // Setup
