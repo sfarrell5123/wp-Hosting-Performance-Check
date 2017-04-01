@@ -1,13 +1,13 @@
-=== Plugin Name ===
+=== wp Hosting Performance Check ===
 Plugin Name: wp Hosting Performance Check
 Description: This plugin is used to graph your wp Hosting Performance. It records the real users and crawlers accessing your site, and the hosting server response and web page load times.
 Author: Scott Farrell
 Contributors: sfarrell5123
-Version: 2.14.10
+Version: 2.14.12
 Tags: performance, speed, hosting, graph, benchmark, php, verson, sysinfo
 Requires at least: 3.2
 Tested up to: 4.7.3
-Stable tag: 2.14.10
+Stable tag: 2.14.12
 Author URI: https://www.wpdone.com.au
 License:     GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

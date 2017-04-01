@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 Plugin Name: wp Hosting Performance Check
 Description: This plugin is used to graph your wp Hosting Performance
 Author: Scott Farrell
-Version: 2.14.10
+Version: 2.14.12
 Author URI: https://www.wpdone.com.au
 License:     GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,7 +32,7 @@ Global
 ********/
 include_once ('vendor/persist-admin-notices-dismissal.php');
 
-define( 'WPHPC_VERSION', '2.14.10' );
+define( 'WPHPC_VERSION', '2.14.12' );
 define( 'WPHPC__MINIMUM_WP_VERSION', '3.2' );
 define( 'WPHPC__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WPHPC__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
