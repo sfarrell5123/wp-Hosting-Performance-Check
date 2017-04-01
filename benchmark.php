@@ -34,7 +34,7 @@ $benchmarkResult = test_benchmark($options);
 //graph
 global $grand;
 
-echo "<p>score: " . $grand . "  (lower is better)</p><br/>";
+echo "<p>score: " . round($grand) . "  (lower is better)</p><br/>";
 ?>
 <canvas id="cvs_bench" width="250" height="250">
     [No canvas support]
@@ -44,7 +44,7 @@ echo "<p>score: " . $grand . "  (lower is better)</p><br/>";
         id: 'cvs_bench',
         min: 0,
         max: 120,
-        value: <?php echo  $grand ;?>,
+        value: <?php echo  round($grand) ;?>,
         options :{
             scaleDecimals : 0,
             labelsCount: 6,
@@ -94,11 +94,11 @@ global $result, $grand;
     //$result['total'] = timer_diff($timeStart);
     global $wphc_timeStart ;
     $wphc_overalltime=  timer_diff($wphc_timeStart);
-    $result['Duration']['start'] = $wphc_timeStart;
-    $result['Duration']['end'] = microtime(true);
+    $result['Duration']['start'] = round($wphc_timeStart,1);
+    $result['Duration']['end'] = round(microtime(true),1);
 
-    $result['Duration']['Elapsed'] = $wphc_overalltime;
-    $result['Duration']['Score'] = pow($wphc_overalltime,3);
+    $result['Duration']['Elapsed'] = round($wphc_overalltime,1);
+    $result['Duration']['Score'] = round(pow($wphc_overalltime,3),1);
 
     $grand +=pow($wphc_overalltime,3);
     $grand=$grand*20/32*2/3;
@@ -120,7 +120,7 @@ function test_math(&$result, $count = 99999)
     }
     global $grand;
     $grand+=timer_diff($timeStart)*10;
-    $result['benchmark']['php']['math'] = timer_diff($timeStart)*10;
+    $result['benchmark']['php']['math'] = round(timer_diff($timeStart)*10,1);
 }
 
 function test_string(&$result, $count = 99999)
@@ -136,7 +136,7 @@ function test_string(&$result, $count = 99999)
     }
     global $grand;
     $grand+=timer_diff($timeStart)*10;
-    $result['benchmark']['php']['string'] = timer_diff($timeStart)*10;
+    $result['benchmark']['php']['string'] = round(timer_diff($timeStart)*10,1);
 }
 
 function test_loops(&$result, $count = 999999)
@@ -151,7 +151,7 @@ function test_loops(&$result, $count = 999999)
     }
     global $grand;
     $grand+=timer_diff($timeStart)*100;
-    $result['benchmark']['php']['loops'] = timer_diff($timeStart)*100;
+    $result['benchmark']['php']['loops'] = round(timer_diff($timeStart)*100,1);
 }
 
 function test_ifelse(&$result, $count = 999999)
@@ -168,7 +168,7 @@ function test_ifelse(&$result, $count = 999999)
     }
     global $grand;
     $grand+=timer_diff($timeStart)*100;
-    $result['benchmark']['php']['ifelse'] = timer_diff($timeStart)*100;
+    $result['benchmark']['php']['ifelse'] = round(timer_diff($timeStart)*100,1);
 }
 
 function test_mysql(&$result, $settings)
@@ -188,9 +188,9 @@ function test_mysql(&$result, $settings)
     //$result['benchmark']['mysql']['select_db'] = timer_diff($timeStart)*1000;
     //$grand+=timer_diff($timeStart)*1000;
 
-    $mylink = $wpdb->get_results('SELECT VERSION() as version;');
-    $arr_row = mysqli_fetch_array($mylink);
-  //  $result['sysinfo']['mysql_version'] = $arr_row['version'];
+    //$mylink =
+   // $arr_row = mysqli_fetch_array($mylink);
+     $wpdb->get_var('SELECT VERSION() as version;');
     $result['benchmark']['mysql']['query_version'] = timer_diff($timeStart)*1000;
     $grand+=timer_diff($timeStart)*1000;
 
@@ -200,13 +200,13 @@ function test_mysql(&$result, $settings)
 //$query = "BENCHMARK(100000,select stddev(option_id),sum(option_id) from wp_options limit 100)";
     for ($i = 0; $i < 10; $i++) {
 
-            $mylink = $wpdb->get_results( "select BENCHMARK(1000000,(select sum(ID) from wp_users limit 5))");
+            $mylink = $wpdb->get_var( "select BENCHMARK(1000000,(select sum(ID) from wp_users limit 5))");
        // $dbResult = mysqli_query($link, $query);
-        $mylink = $wpdb->get_results("select BENCHMARK(1000000,(SELECT  stddev(option_id) FROM wp_options WHERE autoload = 'yes' limit 100))");
+        $mylink = $wpdb->get_var("select BENCHMARK(1000000,(SELECT  stddev(option_id) FROM wp_options WHERE autoload = 'yes' limit 100))");
        // $dbResult = mysqli_query($link, $query);
     }
 
-    $result['benchmark']['mysql']['query_benchmark'] = timer_diff($timeStart)*20;
+    $result['benchmark']['mysql']['query_benchmark'] = round(timer_diff($timeStart)*20,1);
     $grand+=timer_diff($timeStart)*20;
 
     //mysqli_close($link);
