@@ -91,9 +91,9 @@ global $result, $grand;
     $result['Duration']['end'] = round(microtime(true),1);
 
     $result['Duration']['Elapsed'] = round($wphc_overalltime,1);
-    $result['Duration']['Score'] = round(pow($wphc_overalltime,3),1);
+    $result['Duration']['Score'] = round(pow($wphc_overalltime,2),1);
 
-    $grand +=pow($wphc_overalltime,3);
+    $grand +=pow($wphc_overalltime,2);
     $grand=$grand*20/32*2/3;
     $result['Overall Score'] = round($grand);
 
